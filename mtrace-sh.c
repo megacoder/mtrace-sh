@@ -22,7 +22,7 @@
 #include <pthread.h>
 #include <string.h>
 
-#include <syscaller.h>
+#include <gcc-compat.h>
 
 static	char const	name[] = "MALLOC_TRACE";
 static	char *		where;
