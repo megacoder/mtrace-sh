@@ -21,7 +21,7 @@ SUBDIRS	=
 
 .PHONY:	${TARGETS} ${SUBDIRS}
 
-CC	=ccache gcc -std=gnu99
+CC	=ccache gcc -std=gnu99 -g
 DEFS	=-D_FORTIFY_SOURCE=2
 DEFS	+=-DHAVE_READLINE=1
 OPT	=-Os

@@ -65,7 +65,7 @@ death(
 )
 {
 	if( is_set )	{
-		static char const	msg[] = "Hope your memory is good: ";
+		static char const	msg[] = "$ /usr/bin/mtrace ";
 		size_t const		qty = sizeof(msg) - 1;
 
 		muntrace();
