@@ -30,7 +30,7 @@ SUBDIRS	=
 
 .PHONY:	${TARGETS} ${SUBDIRS}
 
-CC	=ccache gcc -std=gnu99 -pthread
+CC	=ccache gcc -std=gnu99
 DEFS	=-D_FORTIFY_SOURCE=2
 DEFS	+=-DHAVE_READLINE=1
 OPT	=-Os
@@ -41,12 +41,12 @@ LDLIBS	=-ldl
 LDLIBS	+=-lSegFault
 LDLIBS	+=-lreadline -ltermcap
 
-all::	syscaller
+all::	mtrace-sh
 
-libsyscaller.so: syscaller.c
-	${CC} ${CFLAGS} -o $@ -shared -fPIC syscaller.c
+libmtrace-sh.so: mtrace-sh.c
+	${CC} ${CFLAGS} -o $@ -shared -fPIC mtrace-sh.c
 
-syscaller: main.o
+mtrace-sh: main.o
 	${CC} ${LDFLAGS} -o $@ main.o ${LDLIBS}
 
 ${TARGETS}::
@@ -57,18 +57,18 @@ clean::
 	${RM} *.s
 
 distclean clobber:: clean
-	${RM} libsyscaller.so
-	${RM} syscaller
+	${RM} libmtrace-sh.so
+	${RM} mtrace-sh
 
-check::	syscaller libsyscaller.so
-	LD_PRELOAD=${PWD}/libsyscaller.so ./syscaller ${ARGS}
+check::	mtrace-sh libmtrace-sh.so
+	LD_PRELOAD=${PWD}/libmtrace-sh.so ./mtrace-sh ${ARGS}
 
-install:: syscaller
+install:: mtrace-sh
 	install -d ${BINDIR}
-	install -c -s syscaller ${BINDIR}/
+	install -c -s mtrace-sh ${BINDIR}/
 
 uninstall::
-	${RM} ${BINDIR}/syscaller
+	${RM} ${BINDIR}/mtrace-sh
 
 tags::
 	ctags -R .
