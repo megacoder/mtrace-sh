@@ -53,7 +53,7 @@ distclean clobber:: clean
 	${RM} mtrace-sh
 
 check::	mtrace-sh libmtrace-sh.so
-	LD_PRELOAD=${PWD}/libmtrace-sh.so ./mtrace-sh ${ARGS}
+	-LD_PRELOAD=${PWD}/libmtrace-sh.so ./mtrace-sh ${ARGS}
 	mtrace mtrace.out
 
 tags::
