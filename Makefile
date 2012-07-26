@@ -32,13 +32,13 @@ LDLIBS	=-ldl
 LDLIBS	+=-lSegFault
 LDLIBS	+=-lreadline -ltermcap
 
-all::	libmtrace-sh.so
+all::	liblibmtrace.so
 
-libmtrace-sh.so: mtrace-sh.c
-	${CC} ${CFLAGS} -o $@ -shared -fPIC mtrace-sh.c
+liblibmtrace.so: libmtrace.c
+	${CC} ${CFLAGS} -o $@ -shared -fPIC libmtrace.c
 
-mtrace-sh: main.o
-	${CC} ${LDFLAGS} -o $@ main.o ${LDLIBS}
+example: example.o
+	${CC} ${LDFLAGS} -o $@ example.o ${LDLIBS}
 
 ${TARGETS}::
 
@@ -46,14 +46,14 @@ clean::
 	${RM} a.out *.o core.* lint tags
 	${RM} *.lst
 	${RM} *.s
-	${RM} mtrace-sh
+	${RM} example
 
 distclean clobber:: clean
-	${RM} libmtrace-sh.so
-	${RM} mtrace-sh
+	${RM} liblibmtrace.so
+	${RM} example
 
-check::	mtrace-sh libmtrace-sh.so
-	-LD_PRELOAD=${PWD}/libmtrace-sh.so ./mtrace-sh ${ARGS}
+check::	example liblibmtrace.so
+	-LD_PRELOAD=${PWD}/libmtrace.so ./example ${ARGS}
 	mtrace mtrace.out
 
 tags::
