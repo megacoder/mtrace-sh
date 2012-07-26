@@ -32,10 +32,10 @@ LDLIBS	=-ldl
 LDLIBS	+=-lSegFault
 LDLIBS	+=-lreadline -ltermcap
 
-all::	liblibmtrace.so
+all::	liblibmtracesh.so
 
-liblibmtrace.so: libmtrace.c
-	${CC} ${CFLAGS} -o $@ -shared -fPIC libmtrace.c
+liblibmtracesh.so: libmtracesh.c
+	${CC} ${CFLAGS} -o $@ -shared -fPIC libmtracesh.c
 
 example: example.o
 	${CC} ${LDFLAGS} -o $@ example.o ${LDLIBS}
@@ -49,11 +49,11 @@ clean::
 	${RM} example
 
 distclean clobber:: clean
-	${RM} liblibmtrace.so
+	${RM} liblibmtracesh.so
 	${RM} example
 
-check::	example liblibmtrace.so
-	-LD_PRELOAD=${PWD}/libmtrace.so ./example ${ARGS}
+check::	example liblibmtracesh.so
+	-LD_PRELOAD=${PWD}/libmtracesh.so ./example ${ARGS}
 	mtrace mtrace.out
 
 tags::
