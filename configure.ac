@@ -2,12 +2,15 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.68])
-AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
+AC_INIT([mtracesh], [0.0.0], [Tommy.Reynolds@MegaCoder.com])
 AC_CONFIG_SRCDIR([src/lib/gcc-compat.h])
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
 AC_PROG_CC
+AC_PROG_LIBTOOL
+AC_SUBST(LIBTOOL_DEPS)
+AC_DISABLE_STATIC
 
 # Checks for libraries.
 
@@ -22,8 +25,10 @@ AC_TYPE_SSIZE_T
 AC_FUNC_MALLOC
 AC_CHECK_FUNCS([setenv])
 
-AC_CONFIG_FILES([Makefile
-                 src/Makefile
-                 src/lib/Makefile
-                 src/shell/Makefile])
+AC_CONFIG_FILES([
+        Makefile
+        src/Makefile
+        src/lib/Makefile
+        src/shell/Makefile
+])
 AC_OUTPUT
