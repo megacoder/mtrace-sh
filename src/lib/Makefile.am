@@ -1,3 +1,3 @@
 lib_LTLIBRARIES = libmtracesh.la
-libmtracesh_la_SOURCES = libmtrace.c
-libmtracesh_la_LDFLAGS = -version-info "${VERSION}"
+libmtracesh_la_SOURCES = libmtracesh.c
+libmtracesh_la_LDFLAGS = -version-info 0:0:0

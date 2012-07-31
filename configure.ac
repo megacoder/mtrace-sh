@@ -5,6 +5,8 @@ AC_PREREQ([2.68])
 AC_INIT([mtracesh], [0.0.0], [Tommy.Reynolds@MegaCoder.com])
 AC_CONFIG_SRCDIR([src/lib/gcc-compat.h])
 AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_MACRO_DIR([m4])
+AM_INIT_AUTOMAKE
 
 # Checks for programs.
 AC_PROG_CC
