@@ -4,11 +4,11 @@
 
 Prefix: %{prefix}
 
-Summary: Convert errno or h_errno codes to names and vice versa
-Name: errno
+Summary: Run program with malloc tracing enabled
+Name: mtrace-sh
 Version: %{ver}
 Release: %{rel}
-Source: http://ftp.megacoder.com/errno/%{name}-%{ver}.tar.gz
+Source: http://ftp.megacoder.com/mtrace-sh/%{name}-%{ver}.tar.gz
 License: GPLv2
 URL: http://www.megacoder.com/
 Group: Applications/System
@@ -16,11 +16,7 @@ Buildroot: %{_tmppath}/%{name}-root
 BuildRequires: popt-devel
 
 %description
-You can use %{name}(1) to translate a numeric system error code into the
-spelling used by the programmer and to also see a copy of the defined
-textual meaning of that code.  By default, the errno value from a
-system call or library function is decoded, but if the --network
-switch is used, the h_errno values are decoded instead.
+Like a charm, it works!
 
 %prep
 
@@ -39,8 +35,8 @@ switch is used, the h_errno values are decoded instead.
 %files
 %defattr(-,root,root)
 %doc AUTHORS COPYING README INSTALL NEWS LICENSE TODO
-%{_bindir}/%{name}
-%lang(en_US) %{_datadir}/locale/en_US/LC_MESSAGES/%{name}.mo
+%{_bindir}/mtracesh
+%{_libdir}/*
 
 %changelog
 * Tue May 16 2009 Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
