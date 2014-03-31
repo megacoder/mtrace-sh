@@ -13,5 +13,8 @@ EXTRA_DIST =		\
 	INSTALL		\
 	LICENSE		\
 	NEWS		\
-	README		\
+	README.md	\
 	TODO
+
+README: README.md
+	markdown2 $< | lynx -stdin -dump >$@
